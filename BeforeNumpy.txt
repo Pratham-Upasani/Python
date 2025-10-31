@@ -1,0 +1,297 @@
+EVERYTHING YOU MUST KNOW BEFORE NUMPY MODULE(ADVANCE BASICS):
+
+1. NESTED LISTS
+
+
+a)List of Lists:   a=[[1,2,3],[4,5,6],[7,8,9]]
+
+a=[]
+n=int(input("Enter number of sub-lists: "))
+for i in range(n):
+    b=[]
+    for j in range(3):   -> Here 3 means that each sub-list will contain only 3 elements
+        c=int(input())
+        b.append(c)
+    a.append(b)
+print(a)
+
+Data accessing: a[0][2]=3, a[0]=[1,2,3]
+
+
+b)Lists of Tuples: a=[(1,2,3),(4,5,6),(7,8,9)]
+
+a=[]
+n=int(input("Enter number of sub-tuples: "))
+for i in range(n):
+    b=()
+    for j in range(3):
+        c=int(input())
+        b+=(c,)
+    a.append(b)
+print(a)
+
+Data Accessing same as in list of lists.
+
+
+c)List of dictionaries: a=[{'Name': 'Pratham', 'Marks': 60}, {'Name': 'Raj', 'Marks': 40}]
+
+a=[]
+n=int(input("Enter number of sub-dictionaries: "))
+for i in range(n):
+	Dict={}
+	Dict['Name']=input()
+	Dict['Marks']=int(input())
+	a.append(Dict)
+print(a)
+
+Data Accessing: for i in range(len(a)):
+			print(a[i]['Name'])
+
+		a=[{'Name': 'Pratham', 'Marks': 60}, {'Name': 'Raj', 'Marks': 40}]
+Index of List =      a[0]                             a[1]
+
+So a[0]={'Name': 'Pratham', 'Marks': 60}
+
+Now access the inner dictionary using its keys:  a[0]['Name']='Pratham'      a[1]['Marks']=40
+
+
+2. DICTIONARY
+
+a)Dictionary of Dictionaries: 
+
+Dict = {
+    'student1': {'name': 'Alice', 'marks': 85},
+    'student2': {'name': 'Bob', 'marks': 92}
+}
+
+Code: 
+Dict={}
+n=int(input("Enter number of students: "))
+for i in range(1,n+1):
+	Dict1={}
+	Dict1['Name']=input(f'Enter Name of Student{i}: ')
+	Dict1['Marks']=int(input(f"Enter Marks of Student{i}: "))
+	Dict[f'student{i}']=Dict1
+print(Dict)
+
+Data Accessing:
+i) Dict['student1'] = {'Name': 'Pratham', 'Marks': 60}
+
+ii) Dict['student1']['Name'] = 'Pratham'
+
+iii) Dict.get('student1')={'Name': 'Pratham', 'Marks': 60}
+     
+     So,Dict.get('student1').get('Name')='Pratham'
+
+
+b)Dictionary of List:
+
+Dict = {
+    "names": ["Alice", "Bob", "Charlie"],
+    "marks": [85, 92, 78],
+    "ages": [20, 21, 19]
+}
+
+Code:
+Dict={}
+n=int(input("Enter number of students: "))
+Names,Marks,Age=[],[],[]
+
+for i in range(1,n+1):
+	Names.append(input(f'Enter Name of Student{i}: '))
+	Marks.append(int(input('Enter Marks: ')))
+	Age.append(int(input('Enter Age: ')))
+Dict['Names']=Names
+Dict['Marks']=Marks
+Dict['Age']=Age
+print(Dict)
+
+Data accessing: 
+i)Dict['Names'] = ['Alice', 'Bob', 'Charlie']
+
+ii)Dict['Names'][2] = 'Charlie'
+
+
+3. STRING FORMATTING METHODS
+
+
+a) The f string method
+
+i)Age=18
+  String=f'My age is {age}'
+
+Output: String='My age is 18'
+
+ii)Adding values from variables
+  A=10
+  B=20
+  String=f'A={A}, B={B}, A+B={A+B}'
+
+Output: String='A=10, B=20, A+B=30'
+
+iii)Shortcut to point (ii) or Debugging
+  A=10
+  B=20
+  String=f'{A=}, {B=}, {A+B=}'
+
+Output: String='A=10, B=20, A+B=30'
+
+iv)Using string functions
+	Data='World'
+	String=f'Hello {Data.upper()}'
+	
+Output: String='Hello WORLD'
+
+v)To round off float values
+	X=56.0
+	String=f'X={X:.2f}'
+	
+Output: String='56.00'
+	float(String)=56.00
+
+	Why is it useful?
+	Because if x=56.0 then round(56.0,2) will also return 56.0 instead of 56.00 So f string methods solves the issue
+
+vi)To separate large numbers by comma
+	X=1000000
+	String=f'X={X:,}'
+
+Output: String=1,000,000
+
+
+b) format() Method:
+
+i)name='Alice'
+  String='Hello, {}'.format(name)
+
+Output: String='Hello, Alice'
+
+ii)Multiple Values
+	name='Alice'
+	age=54
+	String='Hello, My name is {} and my age is {}'.format(name,age)
+
+Output: String='Hello, My name is Alice and my age is 54'
+
+iii)Indexing
+	String='{1} scored more than {0}'.format('Bob','Charlie')
+
+Output: Charlie scored more than Bob
+
+iv)Named Placeholders
+	String='Name={n},Marks={m}'.format(n='Bob',m=60)
+
+Output:'Name=Bob,Marks=60'
+
+v)Round off float values
+	X=56.0
+	String='Value of X={:.2f}'.format(X)
+
+Output: String='Value of X=56.00'
+
+vi)Comma Separator
+	x=1000000
+	String='Value of x={:,}'.format(x)
+
+Output: String='Value of x=1,000,000'
+
+
+c)format specifiers method
+	Name='Amit'
+	Age=18
+	String='My name is %s and My age is %d'%(Name,Age)
+
+Output: My name is Amit and My age is 18
+
+	Name='Amit'
+	Age=18
+	String='My name is %s and My age is %.2f'%(Name,Age)
+
+Output: My name is Amit and My age is 18.00
+
+
+
+4. MAP() FUNCTION: 
+
+For example, you want to take input from user on a single line like:
+
+a = 1 2 3 4
+
+To get, a=[1,2,3,4]
+
+We do, a=list(map(int, input().split()))
+
+Lets understand step by step how this works:
+
+
+a) input().split(): Input will take our whole output Line( values separated by spaces) as a String and .split() will convert the Space separated values into an individual List element.
+
+     so, a=['1','2','3','4']
+
+
+
+b)map(int,['1','2','3','4']): This function will convert every individual list element into the type mentioned i.e. int for our example. So by doing this, every string value will be converted to int but the list will turn into a map object.
+
+
+
+c)list(map_object): To get the list back, We have to typecast the Map_Object we got from last step into a list. And Finally, we get
+
+    a=[1,2,3,4]
+
+
+5. MODULES
+
+They are a collection of special type of functions stored in a .py file. Some modules are pre-installed in Python itself and some have to manually installed through pip(Python's package installer) in the terminal. To Access all modules present in python, do help('modules') and to know existing functions in a module, do help('math').
+
+Importing a module such as 'import math' can waste memory if your program only requires a few functions from it since importing will import all functions present in that module. To solve this, do
+
+from math import sqrt
+
+
+6. enumerate() Function: This function is used to get the index and value of a list or tuple. For example:
+
+
+
+fruit=['Apple','Banana','Orange']
+
+for i,v in enumerate(fruit):
+
+      print(i,v)
+
+
+
+Output: 0 Apple
+
+        1 Banana
+
+        2 Orange
+
+
+
+By default, enumerate provides tuples of (index,value) on which enumerate was performed. To unpack it, we need 2 variables i.e. i and v for our case.
+
+
+
+We can also modify the starting index positions by doing:
+
+fruit=['Apple','Banana','Orange']
+
+for i,v in enumerate(fruit):
+
+      print(i,v)
+
+
+
+Output: 1 Apple
+
+        2 Banana
+
+        3 Orange
+
+
+7. zip() Function: This function is used to combine two lists/tuples/sets into tuple-pairs of their values.
+a=['1','2','3','4','5']
+b=[6,7,8,9,10]
+list(zip(a,b))
+
+Output: [('1', 6), ('2', 7), ('3', 8), ('4', 9), ('5', 10)]
